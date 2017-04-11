@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.xwg.bean.message.response.TextMessage;
 import org.xwg.util.MessageUtil;
+import org.xwg.util.QQFaceUtil;
 
 public class CoreService {
 
@@ -33,8 +34,19 @@ public class CoreService {
             textMessage.setFuncFlag(0);  
             
          // 文本消息  
-            if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {  
-                respContent = "您发送的是文本消息！";  
+            if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_TEXT)) {
+                //respContent = "您发送的是文本消息！";
+                String content=map.get("Content");
+                if(QQFaceUtil.isQqFace(content)){
+                	/*TextMessage text = new TextMessage();  
+                	text.setToUserName(fromUserName);  
+                	text.setFromUserName(toUserName);  
+                	text.setCreateTime(new Date().getTime());  
+                	text.setMsgType(MessageUtil.RESP_MESSAGE_TYPE_TEXT);  
+                	text.setFuncFlag(0);*/
+                	respContent=content;
+                }
+                
             }  
             // 图片消息  
             else if (msgType.equals(MessageUtil.REQ_MESSAGE_TYPE_IMAGE)) {  
