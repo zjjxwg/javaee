@@ -4,7 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * QQ表情工具类
+ * QQ表情工具类,符号表情工具
  * @author xuwenguang
  *
  */
@@ -26,6 +26,16 @@ public class QQFaceUtil {
 	        result = true;  
 	    }  
 	    return result;  
-	}  
+	}
+	/** 
+     * emoji表情转换(hex -> utf-16) 
+     *  
+     * @param hexEmoji 
+     * @return 
+     */  
+	public static String emoji(int hexEmoji){
+		return String.valueOf(Character.toChars(hexEmoji));
+		
+	}
 
 }
